@@ -72,6 +72,7 @@ public class Booking_Step_One extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String dr = sp_dr.getSelectedItem().toString();
+
             }
 
             @Override
