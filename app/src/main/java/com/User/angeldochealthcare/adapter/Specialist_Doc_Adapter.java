@@ -8,25 +8,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.User.angeldochealthcare.R;
-import com.User.angeldochealthcare.interfacs.ListSpecListener;
 import com.User.angeldochealthcare.interfacs.Spec_doc_Listner;
+import com.User.angeldochealthcare.interfacs.Specialist_Doc_Listner;
 import com.User.angeldochealthcare.response.Id_Specialization_Response;
-import com.User.angeldochealthcare.response.Specialization_Response;
-import com.squareup.picasso.Picasso;
+import com.User.angeldochealthcare.response.Specialist_Doctor_Response;
 
 import java.util.List;
 
-public class Specialization_By_Doctor_Adapter extends RecyclerView.Adapter<Specialization_By_Doctor_Adapter.ViewHolder>{
-
-    public static List<Id_Specialization_Response.Result> SpecList;
+public class Specialist_Doc_Adapter extends RecyclerView.Adapter<Specialist_Doc_Adapter.ViewHolder>{
+    public static List<Specialist_Doctor_Response.Result> SpecList;
     private Context context;
-    Spec_doc_Listner listener;
+    Specialist_Doc_Listner listener;
 
-    public Specialization_By_Doctor_Adapter(Context context,List<Id_Specialization_Response.Result> SpecList, Spec_doc_Listner listener) {
+    public Specialist_Doc_Adapter(Context context,List<Specialist_Doctor_Response.Result> SpecList, Specialist_Doc_Listner listener) {
         this.SpecList = SpecList;
         this.context = context;
         this.listener = listener;
@@ -34,14 +31,14 @@ public class Specialization_By_Doctor_Adapter extends RecyclerView.Adapter<Speci
 
     @NonNull
     @Override
-    public Specialization_By_Doctor_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Specialist_Doc_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.spec_doc_layout, parent, false);
-        Specialization_By_Doctor_Adapter.ViewHolder viewHolder = new Specialization_By_Doctor_Adapter.ViewHolder(view);
+        Specialist_Doc_Adapter.ViewHolder viewHolder = new Specialist_Doc_Adapter.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Specialization_By_Doctor_Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Specialist_Doc_Adapter.ViewHolder holder, int position) {
         holder.txt_doc_name.setText("Dr. " + SpecList.get(position).getName());
         holder.txt_fee.setText("₹ " + String.valueOf(SpecList.get(position).getFee()) + " Consulting Fee ");
         holder.txt_exp.setText("Overall " + String.valueOf(SpecList.get(position).getExperience()) + " year Experience ");

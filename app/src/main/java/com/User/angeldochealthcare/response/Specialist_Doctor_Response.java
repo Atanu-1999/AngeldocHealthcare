@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Id_Specialization_Response {
+public class Specialist_Doctor_Response {
         @SerializedName("result")
         @Expose
         private List<Result> result;
@@ -28,9 +28,7 @@ public class Id_Specialization_Response {
         public void setTotal(Integer total) {
             this.total = total;
         }
-
     public class Result {
-
         @SerializedName("id")
         @Expose
         private Integer id;
@@ -82,6 +80,9 @@ public class Id_Specialization_Response {
         @SerializedName("doctorSpecialization")
         @Expose
         private List<DoctorSpecialization> doctorSpecialization;
+        @SerializedName("doctorSpecialist")
+        @Expose
+        private List<DoctorSpecia> doctorSpecialist;
 
         public Integer getId() {
             return id;
@@ -219,8 +220,40 @@ public class Id_Specialization_Response {
             this.doctorSpecialization = doctorSpecialization;
         }
 
-    }
+        public List<DoctorSpecia> getDoctorSpecialist() {
+            return doctorSpecialist;
+        }
 
+        public void setDoctorSpecialist(List<DoctorSpecia> doctorSpecialist) {
+            this.doctorSpecialist = doctorSpecialist;
+        }
+
+    }
+    public class Specialist {
+        @SerializedName("id")
+        @Expose
+        private Integer id;
+        @SerializedName("name")
+        @Expose
+        private String name;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    }
     public class Account {
         @SerializedName("id")
         @Expose
@@ -279,7 +312,31 @@ public class Id_Specialization_Response {
         }
 
     }
+    public class DoctorSpecia {
+        @SerializedName("id")
+        @Expose
+        private Integer id;
+        @SerializedName("specialist")
+        @Expose
+        private Specialist specialist;
 
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Specialist getSpecialist() {
+            return specialist;
+        }
+
+        public void setSpecialist(Specialist specialist) {
+            this.specialist = specialist;
+        }
+
+    }
     public class DoctorSpecialization {
         @SerializedName("id")
         @Expose
@@ -305,7 +362,6 @@ public class Id_Specialization_Response {
         }
 
     }
-
     public class Specialization {
         @SerializedName("id")
         @Expose

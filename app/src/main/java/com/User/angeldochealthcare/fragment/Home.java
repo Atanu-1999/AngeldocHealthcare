@@ -31,13 +31,19 @@ import com.User.angeldochealthcare.activity.Specialization_List;
 import com.User.angeldochealthcare.activity.Verifyed_Doc_List;
 import com.User.angeldochealthcare.adapter.Banner_Adapter;
 import com.User.angeldochealthcare.adapter.Home_Spec_Adapter;
+import com.User.angeldochealthcare.adapter.Specialist_Adapter;
 import com.User.angeldochealthcare.adapter.Specialization_Adapter;
+import com.User.angeldochealthcare.adapter.Specialization_By_Doctor_Adapter;
 import com.User.angeldochealthcare.adapter.Verify_Doc_Adapter;
 import com.User.angeldochealthcare.apiServices.ApiService;
 import com.User.angeldochealthcare.interfacs.ListSpecListener;
+import com.User.angeldochealthcare.interfacs.Spec_doc_Listner;
+import com.User.angeldochealthcare.interfacs.Specialist_Listner;
 import com.User.angeldochealthcare.interfacs.Verify_Doc_Listner;
 import com.User.angeldochealthcare.response.Banner_Response;
 import com.User.angeldochealthcare.response.Get_Profile_Response;
+import com.User.angeldochealthcare.response.Id_Specialization_Response;
+import com.User.angeldochealthcare.response.Specialist_Response;
 import com.User.angeldochealthcare.response.Specialization_Response;
 import com.User.angeldochealthcare.response.Verifyed_Doc_Response;
 import com.User.angeldochealthcare.utility.CustomProgressDialog;
@@ -60,11 +66,13 @@ public class Home extends Fragment {
     private int currentPage = 0;
     private final long DELAY_MS = 5000; // Delay in milliseconds before flipping to the next page
     private final long PERIOD_MS = 5000; // Time period between each auto-flipping
-    RecyclerView rv_spec,rv_verify_doc;
+    RecyclerView rv_spec,rv_verify_doc,rv_specialist_doc;
     List<Specialization_Response.Result> specResponse;
     Home_Spec_Adapter specializationAdapter;
     List<Verifyed_Doc_Response.Result> verifyResponse;
     Verify_Doc_Adapter verifyDocAdapter;
+    List<Specialist_Response.Result> specialistResponse;
+    Specialist_Adapter specialistAdapter;
     String token,TOKEN;
     SharedPreferences loginPref;
     SharedPreferences.Editor editor;
@@ -72,9 +80,7 @@ public class Home extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
-
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +89,7 @@ public class Home extends Fragment {
         progressDialog = new CustomProgressDialog(getContext());
         rv_spec = home.findViewById(R.id.rv_spec);
         rv_verify_doc = home.findViewById(R.id.rv_verify_doc);
+        rv_specialist_doc = home.findViewById(R.id.rv_specialist_doc);
         tv_spec_viewAll = home.findViewById(R.id.tv_spec_viewAll);
         view_pager = home.findViewById(R.id.view_pager);
         tv_viewAll = home.findViewById(R.id.tv_viewAll);
@@ -104,7 +111,57 @@ public class Home extends Fragment {
         getBanner();
         getSpecialization();
         get_verify_doc();
+        get_Specialist_Doc();
         return home;
+    }
+    private void get_Specialist_Doc() {
+        progressDialog.showProgressDialog();
+        TOKEN = "Bearer " + token;
+        int limit = 5;
+        int offset = 0;
+        String keyword = "";
+        boolean status = true;
+        Call<Specialist_Response> get_specialist = ApiService.apiHolders().Get_specialist(TOKEN,limit,offset,keyword,status);
+        get_specialist.enqueue(new Callback<Specialist_Response>() {
+            @Override
+            public void onResponse(Call<Specialist_Response> call, Response<Specialist_Response> response) {
+                if (response.isSuccessful()) {
+                    progressDialog.hideProgressDialog();
+                    assert response.body() != null;
+                    specialistResponse = response.body().getResult();
+                    if (specialistResponse.size()>0)
+                    {
+                        progressDialog.hideProgressDialog();
+                    }
+                    else {
+                        progressDialog.hideProgressDialog();
+                    }
+                    specialistAdapter = new Specialist_Adapter(getContext(), specialistResponse, new Specialist_Listner() {
+                        @Override
+                        public void onItemClickedItem(Specialist_Response.Result item, int position) {
+                            int DocId = item.getId();
+                            String spec_list_name = item.getName();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("SPECIALIST_ID", DocId);
+                            bundle.putString("specialist_name",spec_list_name);
+                            Intent i = new Intent(getContext(), Doctor_All_Page.class);
+                            i.putExtras(bundle);
+                            startActivity(i);
+                        }
+                    });
+                    rv_specialist_doc.setAdapter(specialistAdapter);
+                    rv_specialist_doc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                } else {
+                    progressDialog.hideProgressDialog();
+                    Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Specialist_Response> call, Throwable t) {
+
+            }
+        });
     }
     private void get_verify_doc() {
         progressDialog.showProgressDialog();
@@ -131,14 +188,21 @@ public class Home extends Fragment {
                     verifyDocAdapter = new Verify_Doc_Adapter(getContext(), verifyResponse, new Verify_Doc_Listner() {
                         @Override
                         public void onItemClickedItem(Verifyed_Doc_Response.Result item, int position) {
-                            int SpecId = item.getId();
-                            String spec_name = item.getName();
+                            int DocId = item.getId();
+                            String doc_name = item.getName();
+                            int doc_exp = item.getExperience();
+                            int doc_fee = item.getFee();
+                            //String doc_degree = item.getDoctorSpecialization().get(0).getName();
+
                             Bundle bundle = new Bundle();
-                            bundle.putInt("SPEC_ID", SpecId);
-                            bundle.putString("SPEC_Name",spec_name);
-//                            Intent i = new Intent(getContext(), Specialist_Doctor_List.class);
-//                            i.putExtras(bundle);
-//                            startActivity(i);
+                            bundle.putInt("DOC_ID", DocId);
+                            bundle.putString("doc_name",doc_name);
+                            bundle.putInt("doc_exp",doc_exp);
+                            bundle.putInt("doc_fee",doc_fee);
+                            //bundle.putString("doc_degree",doc_degree);
+                            Intent i = new Intent(getContext(), Booking_Step_One.class);
+                            i.putExtras(bundle);
+                            startActivity(i);
                         }
                     });
                     rv_verify_doc.setAdapter(verifyDocAdapter);

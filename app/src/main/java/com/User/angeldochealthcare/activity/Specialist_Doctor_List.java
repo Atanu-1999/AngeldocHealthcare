@@ -106,7 +106,7 @@ public class Specialist_Doctor_List extends AppCompatActivity {
                             int DocId = item.getId();
                             String doc_name = item.getName();
                             int doc_exp = item.getExperience();
-                            int doc_fee = item.getLiveDoctorFee();
+                            int doc_fee = item.getFee();
                             String doc_degree = item.getDoctorSpecialization().get(0).getSpecialization().getName();
 
                             Bundle bundle = new Bundle();

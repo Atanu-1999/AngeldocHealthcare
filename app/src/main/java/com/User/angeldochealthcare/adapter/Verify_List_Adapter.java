@@ -38,9 +38,9 @@ public class Verify_List_Adapter extends RecyclerView.Adapter<Verify_List_Adapte
     @Override
     public void onBindViewHolder(@NonNull Verify_List_Adapter.ViewHolder holder, int position) {
         holder.txt_doc_Name.setText("Dr. " + VerifyList.get(position).getName());
-        holder.tv_fee.setText("₹ " + String.valueOf(VerifyList.get(position).getLiveDoctorFee()) + " Fee ");
+        holder.tv_fee.setText("₹ " + String.valueOf(VerifyList.get(position).getFee()) + " Fee ");
         holder.txt_exp.setText("Overall " + String.valueOf(VerifyList.get(position).getExperience()) + " year Experience ");
-        holder.txt_degree.setText(VerifyList.get(position).getDoctorSpecialization().get(0).getSpecialization().getName());
+        //holder.txt_degree.setText(VerifyList.get(position).getDoctorSpecialization().get(0).getSpecialization().getName());
         //        if (SpecList.get(position).getImage()==null){
 //            holder.spec_image.setBackgroundResource(R.drawable.heart);
 //        }

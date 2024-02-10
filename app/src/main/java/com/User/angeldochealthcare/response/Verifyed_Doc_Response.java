@@ -28,6 +28,76 @@ public class Verifyed_Doc_Response {
         public void setTotal(Integer total) {
             this.total = total;
         }
+
+    public class Period {
+        @SerializedName("id")
+        @Expose
+        private Integer id;
+        @SerializedName("name")
+        @Expose
+        private String name;
+        @SerializedName("periodStatus")
+        @Expose
+        private Boolean periodStatus;
+        @SerializedName("time_start")
+        @Expose
+        private String timeStart;
+        @SerializedName("time_end")
+        @Expose
+        private String timeEnd;
+        @SerializedName("doctorScheduleId")
+        @Expose
+        private Integer doctorScheduleId;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Boolean getPeriodStatus() {
+            return periodStatus;
+        }
+
+        public void setPeriodStatus(Boolean periodStatus) {
+            this.periodStatus = periodStatus;
+        }
+
+        public String getTimeStart() {
+            return timeStart;
+        }
+
+        public void setTimeStart(String timeStart) {
+            this.timeStart = timeStart;
+        }
+
+        public String getTimeEnd() {
+            return timeEnd;
+        }
+
+        public void setTimeEnd(String timeEnd) {
+            this.timeEnd = timeEnd;
+        }
+
+        public Integer getDoctorScheduleId() {
+            return doctorScheduleId;
+        }
+
+        public void setDoctorScheduleId(Integer doctorScheduleId) {
+            this.doctorScheduleId = doctorScheduleId;
+        }
+
+    }
     public class Result {
         @SerializedName("id")
         @Expose
@@ -92,39 +162,12 @@ public class Verifyed_Doc_Response {
         @SerializedName("degree")
         @Expose
         private Object degree;
-        @SerializedName("e_medical")
+        @SerializedName("fee")
         @Expose
-        private Boolean eMedical;
-        @SerializedName("telemedicine_fee")
+        private Integer fee;
+        @SerializedName("followup_days")
         @Expose
-        private Integer telemedicineFee;
-        @SerializedName("in_persion_fee")
-        @Expose
-        private Integer inPersionFee;
-        @SerializedName("e_board_fee")
-        @Expose
-        private Integer eBoardFee;
-        @SerializedName("provide_telemedicine")
-        @Expose
-        private Boolean provideTelemedicine;
-        @SerializedName("provide_in_persion")
-        @Expose
-        private Boolean provideInPersion;
-        @SerializedName("provide_live_doctor")
-        @Expose
-        private Boolean provideLiveDoctor;
-        @SerializedName("live_doctor_fee")
-        @Expose
-        private Integer liveDoctorFee;
-        @SerializedName("expert_for_assessment")
-        @Expose
-        private Boolean expertForAssessment;
-        @SerializedName("max_free_followup_days")
-        @Expose
-        private Integer maxFreeFollowupDays;
-        @SerializedName("max_patient_limit")
-        @Expose
-        private Integer maxPatientLimit;
+        private Integer followupDays;
         @SerializedName("status")
         @Expose
         private String status;
@@ -154,10 +197,10 @@ public class Verifyed_Doc_Response {
         private Account account;
         @SerializedName("doctorSchedule")
         @Expose
-        private List<Object> doctorSchedule;
+        private List<DoctorSchedule> doctorSchedule;
         @SerializedName("doctorSpecialization")
         @Expose
-        private List<DoctorSpecialization> doctorSpecialization;
+        private List<Object> doctorSpecialization;
 
         public Integer getId() {
             return id;
@@ -327,92 +370,20 @@ public class Verifyed_Doc_Response {
             this.degree = degree;
         }
 
-        public Boolean geteMedical() {
-            return eMedical;
+        public Integer getFee() {
+            return fee;
         }
 
-        public void seteMedical(Boolean eMedical) {
-            this.eMedical = eMedical;
+        public void setFee(Integer fee) {
+            this.fee = fee;
         }
 
-        public Integer getTelemedicineFee() {
-            return telemedicineFee;
+        public Integer getFollowupDays() {
+            return followupDays;
         }
 
-        public void setTelemedicineFee(Integer telemedicineFee) {
-            this.telemedicineFee = telemedicineFee;
-        }
-
-        public Integer getInPersionFee() {
-            return inPersionFee;
-        }
-
-        public void setInPersionFee(Integer inPersionFee) {
-            this.inPersionFee = inPersionFee;
-        }
-
-        public Integer geteBoardFee() {
-            return eBoardFee;
-        }
-
-        public void seteBoardFee(Integer eBoardFee) {
-            this.eBoardFee = eBoardFee;
-        }
-
-        public Boolean getProvideTelemedicine() {
-            return provideTelemedicine;
-        }
-
-        public void setProvideTelemedicine(Boolean provideTelemedicine) {
-            this.provideTelemedicine = provideTelemedicine;
-        }
-
-        public Boolean getProvideInPersion() {
-            return provideInPersion;
-        }
-
-        public void setProvideInPersion(Boolean provideInPersion) {
-            this.provideInPersion = provideInPersion;
-        }
-
-        public Boolean getProvideLiveDoctor() {
-            return provideLiveDoctor;
-        }
-
-        public void setProvideLiveDoctor(Boolean provideLiveDoctor) {
-            this.provideLiveDoctor = provideLiveDoctor;
-        }
-
-        public Integer getLiveDoctorFee() {
-            return liveDoctorFee;
-        }
-
-        public void setLiveDoctorFee(Integer liveDoctorFee) {
-            this.liveDoctorFee = liveDoctorFee;
-        }
-
-        public Boolean getExpertForAssessment() {
-            return expertForAssessment;
-        }
-
-        public void setExpertForAssessment(Boolean expertForAssessment) {
-            this.expertForAssessment = expertForAssessment;
-        }
-
-        public Integer getMaxFreeFollowupDays() {
-            return maxFreeFollowupDays;
-        }
-
-        public void setMaxFreeFollowupDays(Integer maxFreeFollowupDays) {
-            this.maxFreeFollowupDays = maxFreeFollowupDays;
-        }
-
-        public Integer getMaxPatientLimit() {
-            return maxPatientLimit;
-        }
-
-        public void setMaxPatientLimit(Integer maxPatientLimit) {
-            this.maxPatientLimit = maxPatientLimit;
+        public void setFollowupDays(Integer followupDays) {
+            this.followupDays = followupDays;
         }
 
         public String getStatus() {
@@ -487,134 +458,20 @@ public class Verifyed_Doc_Response {
             this.account = account;
         }
 
-        public List<Object> getDoctorSchedule() {
+        public List<DoctorSchedule> getDoctorSchedule() {
             return doctorSchedule;
         }
 
-        public void setDoctorSchedule(List<Object> doctorSchedule) {
+        public void setDoctorSchedule(List<DoctorSchedule> doctorSchedule) {
             this.doctorSchedule = doctorSchedule;
         }
 
-        public List<DoctorSpecialization> getDoctorSpecialization() {
+        public List<Object> getDoctorSpecialization() {
             return doctorSpecialization;
         }
 
-        public void setDoctorSpecialization(List<DoctorSpecialization> doctorSpecialization) {
+        public void setDoctorSpecialization(List<Object> doctorSpecialization) {
             this.doctorSpecialization = doctorSpecialization;
-        }
-
-    }
-
-    public class Specialization {
-        @SerializedName("id")
-        @Expose
-        private Integer id;
-        @SerializedName("name")
-        @Expose
-        private String name;
-        @SerializedName("image")
-        @Expose
-        private String image;
-        @SerializedName("imageName")
-        @Expose
-        private String imageName;
-        @SerializedName("desc")
-        @Expose
-        private String desc;
-        @SerializedName("status")
-        @Expose
-        private Boolean status;
-        @SerializedName("createdAt")
-        @Expose
-        private String createdAt;
-        @SerializedName("updatedAt")
-        @Expose
-        private String updatedAt;
-        @SerializedName("accountId")
-        @Expose
-        private Integer accountId;
-        @SerializedName("updatedBy")
-        @Expose
-        private String updatedBy;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
-        }
-
-        public String getImageName() {
-            return imageName;
-        }
-
-        public void setImageName(String imageName) {
-            this.imageName = imageName;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
-
-        public Boolean getStatus() {
-            return status;
-        }
-
-        public void setStatus(Boolean status) {
-            this.status = status;
-        }
-
-        public String getCreatedAt() {
-            return createdAt;
-        }
-
-        public void setCreatedAt(String createdAt) {
-            this.createdAt = createdAt;
-        }
-
-        public String getUpdatedAt() {
-            return updatedAt;
-        }
-
-        public void setUpdatedAt(String updatedAt) {
-            this.updatedAt = updatedAt;
-        }
-
-        public Integer getAccountId() {
-            return accountId;
-        }
-
-        public void setAccountId(Integer accountId) {
-            this.accountId = accountId;
-        }
-
-        public String getUpdatedBy() {
-            return updatedBy;
-        }
-
-        public void setUpdatedBy(String updatedBy) {
-            this.updatedBy = updatedBy;
         }
 
     }
@@ -777,19 +634,37 @@ public class Verifyed_Doc_Response {
 
     }
 
-    public class DoctorSpecialization {
+    public class DoctorSchedule {
         @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("specializationId")
+        @SerializedName("mode")
         @Expose
-        private Integer specializationId;
+        private String mode;
+        @SerializedName("name")
+        @Expose
+        private String name;
+        @SerializedName("leaveStartDate")
+        @Expose
+        private Object leaveStartDate;
+        @SerializedName("leaveEndDate")
+        @Expose
+        private Object leaveEndDate;
         @SerializedName("doctorDetailId")
         @Expose
         private Integer doctorDetailId;
-        @SerializedName("specialization")
+        @SerializedName("accountId")
         @Expose
-        private Specialization specialization;
+        private String accountId;
+        @SerializedName("createdAt")
+        @Expose
+        private String createdAt;
+        @SerializedName("updatedAt")
+        @Expose
+        private String updatedAt;
+        @SerializedName("period")
+        @Expose
+        private List<Period> period;
 
         public Integer getId() {
             return id;
@@ -799,12 +674,36 @@ public class Verifyed_Doc_Response {
             this.id = id;
         }
 
-        public Integer getSpecializationId() {
-            return specializationId;
+        public String getMode() {
+            return mode;
         }
 
-        public void setSpecializationId(Integer specializationId) {
-            this.specializationId = specializationId;
+        public void setMode(String mode) {
+            this.mode = mode;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Object getLeaveStartDate() {
+            return leaveStartDate;
+        }
+
+        public void setLeaveStartDate(Object leaveStartDate) {
+            this.leaveStartDate = leaveStartDate;
+        }
+
+        public Object getLeaveEndDate() {
+            return leaveEndDate;
+        }
+
+        public void setLeaveEndDate(Object leaveEndDate) {
+            this.leaveEndDate = leaveEndDate;
         }
 
         public Integer getDoctorDetailId() {
@@ -815,12 +714,36 @@ public class Verifyed_Doc_Response {
             this.doctorDetailId = doctorDetailId;
         }
 
-        public Specialization getSpecialization() {
-            return specialization;
+        public String getAccountId() {
+            return accountId;
         }
 
-        public void setSpecialization(Specialization specialization) {
-            this.specialization = specialization;
+        public void setAccountId(String accountId) {
+            this.accountId = accountId;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public void setCreatedAt(String createdAt) {
+            this.createdAt = createdAt;
+        }
+
+        public String getUpdatedAt() {
+            return updatedAt;
+        }
+
+        public void setUpdatedAt(String updatedAt) {
+            this.updatedAt = updatedAt;
+        }
+
+        public List<Period> getPeriod() {
+            return period;
+        }
+
+        public void setPeriod(List<Period> period) {
+            this.period = period;
         }
 
     }

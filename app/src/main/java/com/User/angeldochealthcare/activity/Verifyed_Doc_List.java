@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -83,14 +84,21 @@ public class Verifyed_Doc_List extends AppCompatActivity {
                     verifyDocAdapter = new Verify_List_Adapter(Verifyed_Doc_List.this, verifyResponse, new Verify_Doc_Listner() {
                         @Override
                         public void onItemClickedItem(Verifyed_Doc_Response.Result item, int position) {
-                            int SpecId = item.getId();
-                            String spec_name = item.getName();
+                            int DocId = item.getId();
+                            String doc_name = item.getName();
+                            int doc_exp = item.getExperience();
+                            int doc_fee = item.getFee();
+                            //String doc_degree = item.getDoctorSpecialization().get(0).getSpecialization().getName();
+
                             Bundle bundle = new Bundle();
-                            bundle.putInt("SPEC_ID", SpecId);
-                            bundle.putString("SPEC_Name",spec_name);
-//                            Intent i = new Intent(getContext(), Specialist_Doctor_List.class);
-//                            i.putExtras(bundle);
-//                            startActivity(i);
+                            bundle.putInt("DOC_ID", DocId);
+                            bundle.putString("doc_name",doc_name);
+                            bundle.putInt("doc_exp",doc_exp);
+                            bundle.putInt("doc_fee",doc_fee);
+                            //bundle.putString("doc_degree",doc_degree);
+                            Intent i = new Intent(Verifyed_Doc_List.this, Booking_Step_One.class);
+                            i.putExtras(bundle);
+                            startActivity(i);
                         }
                     });
                     rv_verify.setAdapter(verifyDocAdapter);

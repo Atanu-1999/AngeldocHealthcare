@@ -9,7 +9,10 @@ import com.User.angeldochealthcare.response.OTP_Response;
 import com.User.angeldochealthcare.response.Pages_Response;
 import com.User.angeldochealthcare.response.Profile_Insert_Response;
 import com.User.angeldochealthcare.response.Profile_Upadate_Response;
+import com.User.angeldochealthcare.response.Schedule_Response;
 import com.User.angeldochealthcare.response.Spec_Search_Response;
+import com.User.angeldochealthcare.response.Specialist_Doctor_Response;
+import com.User.angeldochealthcare.response.Specialist_Response;
 import com.User.angeldochealthcare.response.Specialization_Response;
 import com.User.angeldochealthcare.response.Verifyed_Doc_Response;
 
@@ -88,4 +91,26 @@ public interface ApiHolder {
                                          @Query("offset") int offset,
                                          @Query("keyword") String keyword,
                                          @Query("verify") boolean verify);
+    @GET("specialist")
+    Call<Specialist_Response> Get_specialist(@Header("Authorization") String Token,
+                                             @Query("limit") int limit,
+                                             @Query("offset") int offset,
+                                             @Query("keyword") String keyword,
+                                             @Query("status") boolean status);
+    @GET("doctor-details/specialist/{id}")
+    Call<Specialist_Doctor_Response> Get_Id_Doctor(@Path("id") int id,
+                                                 @Header("Authorization") String Token,
+                                                 @Query("limit") int limit,
+                                                 @Query("offset") int offset,
+                                                   @Query("keyword") String keyword,
+                                                 @Query("status") String status);
+    @GET("doctor-schedule/{id}")
+    Call<Schedule_Response> Get_Schedule(@Path("id") int id,
+                                          @Header("Authorization") String Token,
+                                          @Query("fromDate") String fromDate,
+                                          @Query("toDate") String toDate,
+                                          @Query("mode") String mode,
+                                          @Query("type") String type);
+
+
 }
