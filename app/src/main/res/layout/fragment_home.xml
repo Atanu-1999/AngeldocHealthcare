@@ -1,0 +1,608 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.User.angeldochealthcare.fragment.Home">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <SearchView
+                        android:id="@+id/sv_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:hint="Search by Dr. Name | Specialist"
+                        style="@style/SearchViewStyle"
+                        android:background="@drawable/edite_bg"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="3"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@drawable/booking_bg"
+                    android:layout_marginLeft="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/notification"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:padding="@dimen/_2sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_call_24" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    android:clipToPadding="false"
+                    android:foregroundGravity="center"
+                    android:overScrollMode="never" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="Verified Doctors "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_viewAll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="View all"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="#FF0F00"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/_3sdp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_verify_doc"
+                        android:layout_width="match_parent"
+                        android:scrollbars="none"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_margin="@dimen/_5sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_180sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:orientation="vertical"
+                        android:background="@drawable/spec_bg">
+
+                        <LinearLayout
+                            android:id="@+id/btn_spec_doctor"
+                            android:layout_width="@dimen/_180sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/women_bg">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:text="Women  Specialist"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14ssp"
+                                    android:padding="@dimen/_3sdp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="@dimen/_80sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:text="Show More"
+                                    android:textStyle="normal"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:background="@drawable/amount_bg"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:civ_border_color="@color/get_red"
+                                    app:civ_border_width="1dp"
+                                    android:padding="@dimen/_7sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/women_doc"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_180sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:orientation="vertical"
+                        android:background="@drawable/spec_bg"
+                        android:layout_marginLeft="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/_180sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/genaral_bg">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:text="General Physician"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14ssp"
+                                    android:padding="@dimen/_3sdp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="@dimen/_80sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:text="Show More"
+                                    android:textStyle="normal"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:background="@drawable/amount_bg"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:civ_border_color="@color/get_red"
+                                    app:civ_border_width="1dp"
+                                    android:padding="@dimen/_7sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/gen_doc"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_180sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:orientation="vertical"
+                        android:background="@drawable/spec_bg"
+                        android:layout_marginLeft="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/_180sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/women_bg">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_gravity="center">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:text="Women  Specialist"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14ssp"
+                                    android:padding="@dimen/_3sdp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="@dimen/_80sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:text="Show More"
+                                    android:textStyle="normal"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:background="@drawable/amount_bg"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:civ_border_color="@color/get_red"
+                                    app:civ_border_width="1dp"
+                                    android:padding="@dimen/_7sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/women_doc"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_180sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/genaral_bg"
+                        android:layout_marginLeft="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Child   Specialist"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14ssp"
+                                android:padding="@dimen/_3sdp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="@dimen/_80sdp"
+                                android:layout_height="@dimen/_25sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_8ssp"
+                                android:text="Show More"
+                                android:textStyle="normal"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:background="@drawable/amount_bg"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:civ_border_color="@color/get_red"
+                                app:civ_border_width="1dp"
+                                android:padding="@dimen/_7sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/child_bg"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_110sdp"
+                android:orientation="vertical"
+                android:background="@drawable/appoint_bg"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/profile_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_90sdp"
+                        android:orientation="vertical"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:civ_border_color="@color/get_red"
+                            app:civ_border_width="1dp"
+                            android:padding="@dimen/_5sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/doctor"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1.5">
+
+                        <TextView
+                            android:id="@+id/txt_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Dr. Rashmi Kochar"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp"
+                            android:padding="@dimen/_3sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_degree"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Cardiology"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="normal" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_5sdp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:src="@drawable/baseline_date_range_24"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="24-02-2024"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:textColor="@color/black"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginLeft="@dimen/_15sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:src="@drawable/baseline_alarm_24"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="8:30 P.M"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:textColor="@color/black"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/confirm_bg"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_3sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/check_mark"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_5sdp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Confirmed"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="@dimen/_3sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:textColor="#00733C"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_spec_viewAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="end"
+                    android:text="View all"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="#FF0F00"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/_5sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_spec"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_180sdp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:rd="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="10dp"
+    tools:ignore="UseCompoundDrawables" >
+
+    <com.User.angeldochealthcare.utility.CircleProgressBar
+        android:id="@+id/pbProgress"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        rd:extindetermiate="true"
+        rd:extindetermiateDrawable="@drawable/loadernew"
+        rd:extprogressDrawable="@drawable/progress1" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="SelectableText" />
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Angeldoc Healthcare</string>
+    <!--Get Started Page-->
+    <string name="get_started">Best Doctor at 1 Place\n Make your appointment today</string>
+    <string name="get_Dec">Our top notch Designer is ready to give your all customize\n solutions.Our top notch Designer is ready to give your all customize solutions.</string>
+    <string name="get_start_now">Get Start Now</string>
+    <!--Login Page-->
+    <string name="welcome_to">Welcome To</string>
+    <string name="angeldoc_healthcare">Angeldoc Healthcare</string>
+    <string name="terms"><![CDATA[By Click to register button you agree our Data processing Policy & Privacy Policy]]></string>
+    <string name="please_enter_your_mobile_number">Please enter your Mobile Number</string>
+    <string name="enter_your_phone">Enter Your Phone</string>
+    <string name="get_otp">GET OTP</string>
+    <!--OTP Page-->
+    <string name="otp_to_l0gin">OTP to Login</string>
+    <string name="verify_your_phone_number">Verify Your Phone Number</string>
+    <string name="vfy">We have sent an OTP to +91 97XXX - XXXX. Please wait for 2 min before  attempt Next.</string>
+    <string name="you_can_request_otp_after">You Can Request OTP after</string>
+    <string name="submit">SUBMIT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Home Page-->
+
+
+</resources>

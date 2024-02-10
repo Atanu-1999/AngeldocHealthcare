@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8sdp"
+    android:id="@+id/item"
+    android:layout_margin="@dimen/_4sdp">
+
+    <LinearLayout
+        android:id="@+id/heart_surgent"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_weight="1"
+        android:background="@drawable/specility_bg"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/spec_image"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/heart"/>
+
+        <TextView
+            android:id="@+id/spec_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            android:text="Heart Sugen"
+            android:textStyle="normal"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/amount_bg"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
